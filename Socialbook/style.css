@@ -7,14 +7,44 @@
 	box-sizing: border-box;
 	text-decoration: none;
 }
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 5px;
+}
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 50px;
+	background: #1876f2;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #ccc;
+}
+
+/* -------------------CSS Variable Declaration------------------- */
+:root {
+	--body-color: #efefef;
+	--nav-color: #1876f2;
+	--bg-color: #fff;
+}
+
+.dark-theme {
+	--body-color: #0a0a0a;
+	--nav-color: #000;
+	--bg-color: #000;
+}
+
 body {
-	background: #efefef;
+	background: var(--body-color);
+	transition: background 0.3s;
 }
 
 /* -------------------Navigation Bar------------------- */
 nav {
 	padding: 5px 5%;
-	background: #1876f2;
+	background: var(--nav-color);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -66,10 +96,11 @@ nav {
 .search {
 	display: flex;
 	align-items: center;
-	background: #efefef;
+	background: var(--body-color);
 	width: 300px;
 	border-radius: 20px;
 	padding: 5px;
+	transition: background 0.3s;
 }
 .search img {
 	width: 20px;
@@ -135,7 +166,7 @@ nav {
 	position: sticky;
 	top: 60px;
 	align-self: flex-start;
-	background: #fff;
+	background: var(--bg-color);
 	padding: 10px 20px;
 	border-radius: 7px;
 	color: #626262;
@@ -285,10 +316,11 @@ nav {
 
 .write-post-container {
 	width: 100%;
-	background-color: #fff;
+	background: var(--bg-color);
 	border-radius: 6px;
 	padding: 20px;
 	color: #626262;
+	transition: background 0.3s;
 }
 .user-profile {
 	display: flex;
@@ -335,11 +367,12 @@ nav {
 }
 .post-container {
 	width: 100%;
-	background-color: #fff;
+	background: var(--bg-color);
 	border-radius: 6px;
 	padding: 20px;
 	color: #626262;
 	margin: 15px 0;
+	transition: background 0.3s;
 }
 .user-profile span {
 	font-size: 13px;
@@ -415,14 +448,14 @@ nav {
 	position: absolute;
 	width: 90%;
 	max-width: 350px;
-	background: #fff;
+	background: var(--bg-color);
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 	border-radius: 6px;
 	overflow: hidden;
 	top: 108%;
 	right: 5%;
 	max-height: 0;
-	transition: max-height 0.5s;
+	transition: max-height 0.5s, background 0.3s;
 }
 .settings-menu-height {
 	max-height: 500px;
@@ -478,6 +511,63 @@ nav {
 	display: inline-block;
 }
 #dark-btn.dark-btn-on {
-	background: #000;
+	background: #424141;
 	padding-left: 24px;
+}
+
+/* -----------------------Media---Queries---------------- */
+@media (max-width: 900px) {
+	.right-sidebar,
+	.left-sidebar,
+	.search {
+		display: none;
+	}
+	.main-content {
+		flex-basis: 100%;
+	}
+	nav {
+		flex-wrap: wrap;
+	}
+	.nav-left img {
+		width: 110px;
+		margin-right: 20px;
+	}
+	.nav-left ul li img {
+		width: 20px;
+		margin: 0 8px;
+	}
+	.profile-pic img {
+		width: 30px;
+	}
+	.online::after {
+		width: 4px;
+		height: 4px;
+	}
+	.add-post-link {
+		flex-wrap: wrap;
+	}
+	.story img {
+		width: 25px;
+		height: 25px;
+		border-width: 3px;
+	}
+	.story p {
+		font-size: 8px;
+	}
+	.story.story-1 img {
+		width: 25px;
+		height: 25px;
+		bottom: 25px;
+	}
+	.add-post-link a {
+		margin-right: 12px;
+		font-size: 9px;
+		gap: 5px;
+	}
+	.add-post-link a img {
+		width: 16px;
+	}
+	.post-input-container {
+		padding-left: 0;
+	}
 }
